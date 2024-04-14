@@ -64,6 +64,13 @@ const setAssignmentGoalLockState = (assignmentId, assignments, checkboxState) =>
   }
 }
 
+const setAssignmentLockAll = (assignmentId, assignments, checkboxState, assignment_count) => {
+  for(let i = 0; i < assignment_count; i++) {
+    setAssignmentGoalLockState(assignmentId[i], assignments[i], checkboxState)
+  }
+  // should pass in an array of IDs and assignments the size of total assignments
+}
+
 const calculateTotalPointsPossible = (assignments, assignmentGroups, assignmentWeightConsideration) => sum(
   assignments.map(
     a => assignmentWeightConsideration
