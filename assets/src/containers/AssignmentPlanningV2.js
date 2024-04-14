@@ -197,6 +197,12 @@ function AssignmentPlanningV2 (props) {
     <Root>
       <Helmet title='Assignment Planning' />
       {disabled ? <AlertBanner>Preview Mode: This view is currently disabled for students.</AlertBanner> : undefined}
+      <Checkbox
+        checked={checkboxLockState}
+        onChange = {(e) => setAssignmentGoalGrade(e.target.checked)}
+        color = "primary"
+        inputProps = {{'aria-label': 'Lock assignment goals checkbox'}}
+        ></Checkbox>
       <div className={classes.root}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
