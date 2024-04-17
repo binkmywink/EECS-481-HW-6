@@ -19,6 +19,7 @@ const StyledGrid = styled(Grid)({
   }
 })
 
+
 function AssignmentGoalInput (props) {
   const {
     currentGrade,
@@ -56,7 +57,7 @@ function AssignmentGoalInput (props) {
         value={goalGradeInternal}
         label={
           mathWarning
-            ? 'Scores no longer match goal. Would you like to lower it?'
+            ? 'Scores no longer match goal. Lower the goal grade to match.'
             : goalGrade > 100
               ? 'Over 100%'
               : goalGrade > maxPossibleGrade

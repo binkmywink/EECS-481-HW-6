@@ -27,7 +27,8 @@ import {
   clearGoals,
   setAssignmentGoalGrade,
   setAssignmentGoalLockState,
-  setAssigmentGoalInputState
+  setAssigmentGoalInputState,
+  setAssignmentLockAll
 } from '../util/assignment'
 
 const PREFIX = 'AssignmentPlanningV2'
@@ -179,6 +180,12 @@ function AssignmentPlanningV2 (props) {
     )
   }
 
+  const handleAssignmentLockAll = (checkboxLockState) => {
+    const assignment = assignments.filter(a => a.id === key)
+    const v = { assignmentId: key, assignGoalGrade: roundToXDecimals(assignment[0].goalGrade, 1), checkboxLockState: checkboxState }
+    setAssignmentLockAll(key, assignments, checkboxLockState)
+  }
+
   const handleInputFocus = key => {
     setAssignments(
       setAssigmentGoalInputState(key, assignments, true)
@@ -289,6 +296,7 @@ function AssignmentPlanningV2 (props) {
                         dateStart={data.course.dateStart}
                         handleAssignmentGoalGrade={handleAssignmentGoalGrade}
                         handleAssignmentLock={handleAssignmentLock}
+                        handleAssignmentLockAll={handleAssignmentLockAll}
                         handleInputFocus={handleInputFocus}
                         handleInputBlur={handleInputBlur}
                       />
